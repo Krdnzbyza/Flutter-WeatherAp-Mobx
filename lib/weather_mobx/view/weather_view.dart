@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:weather_app_mobx/weather_mobx/models/weather_model.dart';
 import 'package:weather_app_mobx/weather_mobx/service/weather_service.dart';
 
@@ -24,8 +25,6 @@ class _WeatherViewState extends State<WeatherView> {
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 16),
         alignment: Alignment.center,
-        // TODO: Implement with MobX
-
         child: buildInitialInput(),
       ),
     );
@@ -33,14 +32,14 @@ class _WeatherViewState extends State<WeatherView> {
 
   Widget buildInitialInput() {
     return Center(
-      child: CityInputField(),
-    );
-  }
-
-  Widget buildLoading() {
-    // control //TODO
-    return Center(
-      child: CircularProgressIndicator(),
+      child: Column(
+        children: [
+          Lottie.network(
+              'https://assets9.lottiefiles.com/temp/lf20_dgjK9i.json'),
+          Divider(),
+          CityInputField(),
+        ],
+      ),
     );
   }
 }
@@ -64,12 +63,19 @@ class _CityInputFieldState extends State<CityInputField> {
             ? Center(
                 child: Column(
                   children: [
+                    Text(currentWeather!.sys.country,
+                        style: Theme.of(context).textTheme.headline3),
+                    Divider(thickness: 2),
                     Text(currentWeather!.name,
                         style: Theme.of(context).textTheme.headline3),
-                    Divider(),
+                    Divider(thickness: 2),
                     Text(
                         "${convertTemp(currentWeather!.main.temp).toString()} °C",
                         style: Theme.of(context).textTheme.headline5),
+                    Divider(thickness: 2),
+                    //WeatherElement
+                    Text(currentWeather!.id.toString(),
+                        style: Theme.of(context).textTheme.headline3),
                     Divider(thickness: 2),
                   ],
                 ),
