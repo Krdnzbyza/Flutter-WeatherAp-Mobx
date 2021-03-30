@@ -1,25 +1,36 @@
-/*
-class WeatherViewModel = _WeatherViewModelBase with _$WeatherViewModel;
-
-//WeatherViewModel(WeatherService weatherService) : super(weatherService);
-
-abstract class _WeatherViewModelBase with Store {
-  final WeatherService _weatherService;
-
-  _WeatherViewModelBase(this._weatherService);
-
-  ObservableFuture<Weather> _weatherFuture;
-  @observable
-  Weather weather;
-
-
-  @computed
-
-}
-*/
 import 'package:mobx/mobx.dart';
+
+import 'package:weather_app_mobx/weather_mobx/core/feature/IWeatherService.dart';
+import 'package:weather_app_mobx/weather_mobx/core/model/weather_model.dart';
+
 part 'weather_model.g.dart';
 
-class WeatherViewModel = _WeatherViewModelBase with _$WeatherViewModel;
+class WeatherMobx = _WeatherMobxBase with _$WeatherMobx;
 
-abstract class _WeatherViewModelBase with Store {}
+abstract class _WeatherMobxBase with Store {
+  IWeatherService weatherService;
+
+  _WeatherMobxBase({
+    required this.weatherService,
+  }) {
+    fetchItems();
+  }
+  @observable
+  bool isLoading = false; // widget etkilenecekse  observable ile sarmalanır
+
+  @observable
+  var weatherItems = ObservableList<WeatherModel>();
+
+  @action // işlem yapılır ve bu işlem yapıldığında haber verilecekse action
+  void changeLoading() {
+    isLoading = !isLoading;
+  }
+
+  @action
+  Future<void> fetchItems() async {
+    changeLoading();
+    var response = await weatherService.fetchWeathers();
+    weatherItems = response.asObservable(); // servis isteği
+    changeLoading();
+  }
+}

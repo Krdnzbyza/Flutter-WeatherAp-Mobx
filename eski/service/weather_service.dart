@@ -1,5 +1,6 @@
-import 'package:weather_app_mobx/weather_mobx/models/weather_model.dart';
-import 'package:http/http.dart' as http;
+/*import 'package:http/http.dart' as http;
+
+import '../models/weather_model.dart';
 
 class WeatherService {
   Future<Weather> getWeather(String cityName) async {
@@ -10,3 +11,4 @@ class WeatherService {
     return weatherFromJson(testap.body);
   }
 }
+*/

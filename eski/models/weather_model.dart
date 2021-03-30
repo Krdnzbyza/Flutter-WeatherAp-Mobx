@@ -1,4 +1,4 @@
-import 'dart:convert';
+/*import 'dart:convert';
 
 Weather weatherFromJson(String str) => Weather.fromJson(json.decode(str));
 
@@ -220,3 +220,4 @@ class Wind {
         "deg": deg,
       };
 }
+*/
