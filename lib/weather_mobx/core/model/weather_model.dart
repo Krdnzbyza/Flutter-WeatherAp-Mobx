@@ -57,6 +57,8 @@ class Coord extends INetworkModel<Coord> {
   Coord fromJson(Map<String, dynamic> json) {
     return _$CoordFromJson(json);
   }
+
+  factory Coord.fromJson(Map<String, dynamic> json) => _$CoordFromJson(json);
 }
 
 @JsonSerializable()
@@ -75,6 +77,9 @@ class Weather extends INetworkModel<Weather> {
   Weather fromJson(Map<String, dynamic> json) {
     return _$WeatherFromJson(json);
   }
+
+  factory Weather.fromJson(Map<String, dynamic> json) =>
+      _$WeatherFromJson(json);
 }
 
 @JsonSerializable()
@@ -101,6 +106,8 @@ class Main extends INetworkModel<Main> {
   Main fromJson(Map<String, dynamic> json) {
     return _$MainFromJson(json);
   }
+
+  factory Main.fromJson(Map<String, dynamic> json) => _$MainFromJson(json);
 }
 
 @JsonSerializable()
@@ -117,6 +124,8 @@ class Wind extends INetworkModel<Wind> {
   Wind fromJson(Map<String, dynamic> json) {
     return _$WindFromJson(json);
   }
+
+  factory Wind.fromJson(Map<String, dynamic> json) => _$WindFromJson(json);
 }
 
 @JsonSerializable()
@@ -132,6 +141,8 @@ class Clouds extends INetworkModel<Clouds> {
   Clouds fromJson(Map<String, dynamic> json) {
     return _$CloudsFromJson(json);
   }
+
+  factory Clouds.fromJson(Map<String, dynamic> json) => _$CloudsFromJson(json);
 }
 
 @JsonSerializable()
@@ -151,4 +162,6 @@ class Sys extends INetworkModel<Sys> {
   Sys fromJson(Map<String, dynamic> json) {
     return _$SysFromJson(json);
   }
+
+  factory Sys.fromJson(Map<String, dynamic> json) => _$SysFromJson(json);
 }
