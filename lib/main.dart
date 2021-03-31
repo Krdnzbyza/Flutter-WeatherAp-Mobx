@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_mobx/weather_mobx/view/weather_view.dart';
+
+import 'weather_mobx/feed/view/weather_mobx_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather',
-      home: WeatherView(),
+      home: WeatherMobxView(),
     );
   }
 }

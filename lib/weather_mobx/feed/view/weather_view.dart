@@ -1,7 +1,6 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:weather_app_mobx/weather_mobx/models/weather_model.dart';
-import 'package:weather_app_mobx/weather_mobx/service/weather_service.dart';
 
 class WeatherView extends StatefulWidget {
   @override
@@ -11,11 +10,12 @@ class WeatherView extends StatefulWidget {
 class _WeatherViewState extends State<WeatherView> {
   @override
   Widget build(BuildContext context) {
+    final _titleText = 'WEATHER';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple[200],
         title: Text(
-          " WEATHER  ",
+          _titleText,
           style: Theme.of(context)
               .textTheme
               .headline4!
@@ -31,11 +31,11 @@ class _WeatherViewState extends State<WeatherView> {
   }
 
   Widget buildInitialInput() {
+    final _lottieUrl = 'https://assets9.lottiefiles.com/temp/lf20_dgjK9i.json';
     return Center(
       child: Column(
         children: [
-          Lottie.network(
-              'https://assets9.lottiefiles.com/temp/lf20_dgjK9i.json'),
+          Lottie.network(_lottieUrl),
           Divider(),
           CityInputField(),
         ],
@@ -51,15 +51,15 @@ class CityInputField extends StatefulWidget {
 
 class _CityInputFieldState extends State<CityInputField> {
   String cityName = '';
-  Weather? currentWeather;
-  WeatherService weatherService = WeatherService();
+  //Weather? currentWeather;
+  //WeatherService weatherService = WeatherService();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        currentWeather != null
+        /* currentWeather != null
             ? Center(
                 child: Column(
                   children: [
@@ -70,17 +70,16 @@ class _CityInputFieldState extends State<CityInputField> {
                         style: Theme.of(context).textTheme.headline3),
                     Divider(thickness: 2),
                     Text(
-                        "${convertTemp(currentWeather!.main.temp).toString()} °C",
+                        '${convertTemp(currentWeather!.main.temp).toString()} °C',
                         style: Theme.of(context).textTheme.headline5),
                     Divider(thickness: 2),
-                    //WeatherElement
                     Text(currentWeather!.id.toString(),
                         style: Theme.of(context).textTheme.headline3),
                     Divider(thickness: 2),
                   ],
                 ),
-              )
-            : Center(child: CircularProgressIndicator()),
+              )s
+            : Center(child: CircularProgressIndicator()),*/
         Padding(
           padding: const EdgeInsets.symmetric(),
           child: textField(),
@@ -96,7 +95,7 @@ class _CityInputFieldState extends State<CityInputField> {
       },
       textInputAction: TextInputAction.search,
       decoration: InputDecoration(
-        hintText: "Enter a city",
+        hintText: 'Enter a city',
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         suffixIcon:
             GestureDetector(onTap: _getWeather, child: Icon(Icons.search)),
@@ -107,9 +106,9 @@ class _CityInputFieldState extends State<CityInputField> {
   submitCityName(BuildContext context, String value) {}
 
   void _getWeather() async {
-    var result = await weatherService.getWeather(cityName);
+    // var result = await weatherService.getWeather(cityName);
     setState(() {
-      currentWeather = result;
+      // currentWeather = result;
     });
   }
 
@@ -117,3 +116,4 @@ class _CityInputFieldState extends State<CityInputField> {
     return kelvin - 273.15;
   }
 }
+*/
