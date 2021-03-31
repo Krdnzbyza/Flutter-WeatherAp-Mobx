@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../model/weather_model.dart';
+import 'package:weather_app_mobx/weather_mobx/core/model/weather_model.dart';
 
 class TestField extends StatefulWidget {
   final WeatherModel? model;

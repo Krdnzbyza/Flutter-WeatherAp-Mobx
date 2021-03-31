@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_mobx/weather_mobx/core/model/weather_model.dart';
 
-import '../model/weather_model.dart';
 import 'weather_result.dart';
 
 class WeaatherCase extends StatelessWidget {
