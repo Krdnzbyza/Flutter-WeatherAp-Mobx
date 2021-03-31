@@ -1,37 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app_mobx/weather_mobx/core/model/weather_model.dart';
 
-class TestField extends StatefulWidget {
-  final WeatherModel? model;
+class WeatherTextField extends StatelessWidget {
+  final VoidCallback onPressed;
+  final TextEditingController controller;
 
-  const TestField({Key? key, this.model}) : super(key: key);
-  @override
-  _TestFieldState createState() => _TestFieldState();
-}
+  const WeatherTextField({
+    Key? key,
+    required this.onPressed,
+    required this.controller,
+  }) : super(key: key);
 
-class _TestFieldState extends State<TestField> {
-  WeatherModel weatherService = WeatherModel();
-  String cityName = '';
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (text) {
-        cityName = text;
-      },
+      controller: controller,
       textInputAction: TextInputAction.search,
       decoration: InputDecoration(
         hintText: 'Enter a city',
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-        suffixIcon:
-            GestureDetector(onTap: _getWeather, child: Icon(Icons.search)),
+        suffixIcon: IconButton(
+          onPressed: () => onPressed(),
+          icon: Icon(Icons.search),
+        ),
       ),
     );
-  }
-
-  void _getWeather() async {
-    String? result = weatherService.name.toString();
-    setState(() {
-      weatherService = result as WeatherModel; // add a cast ?
-    });
   }
 }

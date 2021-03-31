@@ -7,16 +7,27 @@ class WeatherService extends IWeatherService {
   WeatherService(INetworkManager manager) : super(manager);
 
   @override
-  Future<List<WeatherModel>> fetchWeathers() async {
-    final response = await manager.send<WeatherModel, List<WeatherModel>>(
-        NetworkPath.WEATHERS.rawValue(),
-        parseModel: WeatherModel(),
-        method: RequestType.GET);
+  Future<WeatherModel> get fetchWeathers async {
+    final response = await manager.send(
+      NetworkPath.WEATHERS.rawValue(),
+      parseModel: WeatherModel(),
+      method: RequestType.GET,
+    );
 
-    return response.data ?? [];
+    return response.data ?? WeatherModel();
+  }
+
+  @override
+  Future<WeatherModel> selectCityFetchWeathers(String city) async {
+    final response = await manager.send(
+      'data/2.5/weather?q=$city,tr&APPID=8aa7d8f91556412cc4545d00559a57fe',
+      parseModel: WeatherModel(),
+      method: RequestType.GET,
+    );
+
+    return response.data ?? WeatherModel();
   }
 }
-
 enum NetworkPath { WEATHERS }
 
 extension NetworkPathExtension on NetworkPath {

@@ -1,10 +1,13 @@
 import 'package:vexana/vexana.dart';
-import 'package:weather_app_mobx/weather_mobx/core/model/weather_model.dart';
+
+import '../model/weather_model.dart';
 
 abstract class IWeatherService {
   final INetworkManager manager;
 
   IWeatherService(this.manager);
 
-  Future<List<WeatherModel>> fetchWeathers();
+  Future<WeatherModel> get fetchWeathers;
+
+  Future<WeatherModel> selectCityFetchWeathers(String city);
 }

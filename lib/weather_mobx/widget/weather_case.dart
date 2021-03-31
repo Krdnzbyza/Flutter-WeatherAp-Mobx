@@ -30,10 +30,7 @@ class WeaatherCase extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(),
-          child: TestField(),
-        ),
+
       ],
     );
   }
